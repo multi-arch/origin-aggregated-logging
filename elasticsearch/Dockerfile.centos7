@@ -1,4 +1,4 @@
-FROM centos:centos7
+FROM registry.redhat.io/ubi7:latest
 
 MAINTAINER OpenShift Development <dev@lists.openshift.redhat.com>
 
@@ -25,9 +25,7 @@ ENV ES_PATH_CONF=/etc/elasticsearch/ \
 
 ARG MAVEN_REPO_URL=https://repo1.maven.org/maven2/
 
-RUN yum install -y --setopt=tsflags=nodocs --nogpgcheck \
-        https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm && \
-    packages="java-${JAVA_VER}-openjdk-headless \
+RUN packages="java-${JAVA_VER}-openjdk-headless \
               PyYAML  \
               hostname \
               openssl \
